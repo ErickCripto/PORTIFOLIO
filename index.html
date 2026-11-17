@@ -1,0 +1,817 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Erick | Portfólio</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Saira:ital,wdth,wght@0,50..125,400..900;1,50..125,400..900&family=Silkscreen:wght@400;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --azul:#0B2A6F; --azul2:#1641A8; --noite:#06122E; --noite2:#0C1D45;
+  --ciano:#3FD0FF; --branco:#F4F8FF; --nevoa:#9FB3D9;
+  --vermelho:#F2545B; --verde:#7CC242; --ouro:#F2C14E; --roxo:#A27BFF;
+  --mono:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;
+  --pixel:"Silkscreen",var(--mono);
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{font-family:"Saira",system-ui,sans-serif;background:var(--noite);color:var(--branco);line-height:1.55;font-size:17px;-webkit-font-smoothing:antialiased;overflow-x:hidden}
+a{color:inherit}
+button{font:inherit;color:inherit}
+:focus-visible{outline:3px solid var(--ciano);outline-offset:3px}
+.wrap{max-width:1180px;margin:0 auto;padding:0 24px}
+@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}*,*::before,*::after{animation:none!important;transition:none!important}}
+
+/* ---------- BOOT ---------- */
+#boot{position:fixed;inset:0;z-index:100;background:#020814;display:flex;align-items:center;justify-content:center;padding:24px;cursor:pointer}
+#boot pre{font-family:var(--mono);font-size:15px;color:#8EF0B0;line-height:1.7;min-height:220px;width:min(620px,100%);white-space:pre-wrap}
+#boot .cursor{display:inline-block;width:9px;height:17px;background:#8EF0B0;vertical-align:-3px;animation:pisca 1s steps(1) infinite}
+@keyframes pisca{50%{opacity:0}}
+#boot .pular{position:absolute;bottom:24px;right:24px;background:none;border:1px solid #2a3b55;color:#8aa0c0;padding:6px 14px;border-radius:4px;cursor:pointer;font-family:var(--mono);font-size:13px}
+#boot.sai{animation:sai .5s forwards}
+@keyframes sai{to{opacity:0;visibility:hidden}}
+
+/* ---------- HUD topo ---------- */
+.hud{position:fixed;top:0;left:0;right:0;z-index:50;display:flex;justify-content:space-between;align-items:center;padding:12px 24px;background:linear-gradient(#06122Ee6,#06122E00)}
+.jogador{display:flex;align-items:center;gap:12px;font-weight:800;font-style:italic;font-size:20px;text-decoration:none;letter-spacing:.02em}
+.nivel{font-family:var(--pixel);font-style:normal;font-size:11px;background:var(--verde);color:#0b2a0b;padding:3px 7px 2px;box-shadow:inset -2px -2px 0 #4f8a22,inset 2px 2px 0 #b5ec7e}
+.cmd-btn{display:flex;gap:10px;align-items:center;background:#ffffff10;border:1px solid #ffffff26;padding:7px 12px;border-radius:6px;cursor:pointer;font-size:14px;color:var(--nevoa)}
+.cmd-btn kbd{font-family:var(--mono);font-size:12px;background:#ffffff18;padding:1px 6px;border-radius:3px;color:var(--branco)}
+
+/* ---------- HERO estilo menu JRPG ---------- */
+.hero{position:relative;min-height:100vh;background:var(--azul);overflow:hidden;display:flex;align-items:center}
+.hero::before{content:"";position:absolute;inset:-20% -10%;background:
+  linear-gradient(115deg,transparent 0 52%,var(--azul2) 52% 70%,transparent 70%),
+  linear-gradient(115deg,transparent 0 73%,var(--ciano) 73% 74.2%,transparent 74.2%),
+  linear-gradient(115deg,transparent 0 76%,#ffffff 76% 76.5%,transparent 76.5%)}
+.codigo-fundo{position:absolute;right:-60px;top:12%;font-family:var(--mono);font-size:14px;line-height:1.8;color:#ffffff;opacity:.07;transform:rotate(-8deg);white-space:pre;pointer-events:none;user-select:none}
+.hero-grid{position:relative;display:grid;grid-template-columns:1.15fr .85fr;gap:32px;align-items:center;width:100%;padding-top:80px;padding-bottom:60px}
+.hero h1{font-style:italic;font-weight:900;font-variation-settings:"wdth" 80;font-size:clamp(52px,8.6vw,124px);line-height:.86;letter-spacing:-.01em;text-transform:none;transform:rotate(-4deg);transform-origin:left}
+.hero h1 .l2{display:block;color:var(--ciano);margin-left:.5em}
+.hero .sub{margin-top:40px;max-width:46ch;font-size:19px;color:#D3DDF3}
+.hero .sub strong{color:#fff}
+
+.menu{list-style:none;transform:rotate(-6deg);display:flex;flex-direction:column;gap:6px;align-items:flex-end}
+.menu li{--off:0px;margin-right:var(--off)}
+.menu li:nth-child(2){--off:28px}.menu li:nth-child(3){--off:56px}.menu li:nth-child(4){--off:84px}
+.menu a{position:relative;display:block;text-decoration:none;font-weight:900;font-style:italic;font-variation-settings:"wdth" 75;font-size:clamp(34px,4.6vw,60px);line-height:1;padding:6px 28px 8px;color:#fff;transition:transform .18s,color .18s}
+.menu a::before{content:"";position:absolute;inset:0;background:var(--vermelho);clip-path:polygon(6% 0,100% 8%,95% 100%,0 88%);transform:scaleX(0);transform-origin:right;transition:transform .2s;z-index:-1}
+.menu a small{font-family:var(--pixel);font-style:normal;font-size:11px;font-weight:400;letter-spacing:0;color:var(--ciano);vertical-align:super;margin-left:8px}
+.menu a:hover,.menu a:focus-visible{transform:translateX(-18px) scale(1.06);outline:none}
+.menu a:hover::before,.menu a:focus-visible::before{transform:scaleX(1)}
+.menu a:hover small,.menu a:focus-visible small{color:#fff}
+.dica-teclas{margin-top:22px;text-align:right;font-family:var(--pixel);font-size:11px;color:var(--nevoa);transform:rotate(-6deg)}
+
+/* killfeed */
+.killfeed{position:absolute;top:76px;right:24px;display:flex;flex-direction:column;gap:6px;align-items:flex-end;z-index:2;pointer-events:none}
+.kill{display:flex;align-items:center;gap:8px;background:#000000a0;border-right:3px solid var(--vermelho);padding:5px 10px;font-size:14px;font-weight:600;animation:entra .3s ease-out}
+.kill .a{color:var(--ciano)}.kill .b{color:#ffd9da}
+.kill svg{width:18px;height:18px}
+@keyframes entra{from{transform:translateX(30px);opacity:0}}
+
+/* ---------- títulos de seção ---------- */
+section{position:relative;padding:110px 0}
+.comentario{font-family:var(--mono);font-size:15px;color:var(--ciano)}
+.sec-titulo{font-weight:900;font-style:italic;font-variation-settings:"wdth" 80;font-size:clamp(40px,6vw,76px);line-height:.95;margin-top:6px}
+.sec-sub{color:var(--nevoa);margin-top:12px;max-width:58ch}
+
+/* ---------- SELEÇÃO DE PROJETOS ---------- */
+#projetos{background:radial-gradient(1000px 500px at 70% 0%,#173a8a55,transparent),var(--noite)}
+.palco{display:grid;grid-template-columns:330px 1fr;gap:48px;margin-top:48px;align-items:start}
+.carta-grande-slot{position:sticky;top:90px}
+.info .raridade{font-family:var(--pixel);font-size:12px;color:var(--rar)}
+.info h3{font-weight:900;font-style:italic;font-variation-settings:"wdth" 85;font-size:clamp(36px,4.5vw,56px);line-height:1;margin-top:6px}
+.info .tipo{color:var(--nevoa);margin-top:6px}
+.info .desc{margin-top:16px;max-width:60ch;color:#DCE5F7}
+.stats{display:grid;grid-template-columns:auto 1fr auto;gap:8px 14px;align-items:center;margin-top:22px;max-width:460px;font-size:14px}
+.stats .barra{height:10px;background:#ffffff14;clip-path:polygon(0 0,100% 0,98% 100%,0 100%)}
+.stats .barra i{display:block;height:100%;background:linear-gradient(90deg,var(--ciano),#fff);width:0;transition:width .6s cubic-bezier(.2,.8,.2,1)}
+.stats .v{font-family:var(--pixel);font-size:12px}
+
+.habilidades{display:grid;grid-template-columns:repeat(4,1fr);gap:10px;margin-top:26px}
+.hab{position:relative;background:#ffffff0c;border:1px solid #ffffff22;padding:14px 12px 12px;cursor:pointer;text-align:left;clip-path:polygon(0 0,100% 0,100% 82%,88% 100%,0 100%);transition:background .15s,border-color .15s}
+.hab .tecla{position:absolute;top:8px;right:10px;font-family:var(--pixel);font-size:12px;color:var(--nevoa);border:1px solid #ffffff33;padding:0 5px}
+.hab b{display:block;font-size:15px;line-height:1.2;padding-right:28px}
+.hab[aria-pressed="true"]{background:#3FD0FF22;border-color:var(--ciano)}
+.hab[aria-pressed="true"] .tecla{color:#06122E;background:var(--ciano);border-color:var(--ciano)}
+.hab-desc{margin-top:12px;min-height:3.1em;color:#DCE5F7;font-size:15.5px;border-left:3px solid var(--ciano);padding-left:12px}
+
+.demo{margin-top:30px;background:#020a1f;border:1px solid #ffffff1f;border-radius:10px;overflow:hidden}
+.demo-top{display:flex;justify-content:space-between;align-items:center;padding:10px 14px;background:#ffffff08;border-bottom:1px solid #ffffff14;font-family:var(--mono);font-size:13px;color:var(--nevoa)}
+.demo-top .pontos{display:flex;gap:6px}.demo-top .pontos i{width:10px;height:10px;border-radius:50%;background:#ffffff26}
+.demo-corpo{padding:18px}
+.demo-corpo .nota{font-size:13px;color:var(--nevoa);margin-top:10px}
+.btn-acao{display:inline-flex;align-items:center;gap:8px;background:var(--vermelho);color:#fff;border:0;font-weight:800;font-style:italic;font-size:16px;padding:10px 22px;cursor:pointer;clip-path:polygon(6% 0,100% 0,94% 100%,0 100%);transition:filter .15s,transform .1s}
+.btn-acao:hover{filter:brightness(1.1)}.btn-acao:active{transform:scale(.97)}
+.btn-sec{background:#ffffff10;border:1px solid #ffffff30;color:#fff;padding:7px 14px;cursor:pointer;font-weight:600;font-size:14px;border-radius:4px}
+.btn-sec[aria-pressed="true"]{background:var(--ciano);color:#06122E;border-color:var(--ciano)}
+
+/* deck de cartas */
+.deck{display:flex;gap:18px;margin-top:64px;overflow-x:auto;padding:18px 4px 22px;scrollbar-width:thin}
+.deck-titulo{font-family:var(--pixel);font-size:12px;color:var(--nevoa);margin-top:56px}
+
+/* carta (original, estilo TCG) */
+.carta{--rar:var(--ciano);flex:0 0 auto;width:172px;aspect-ratio:5/7;position:relative;border:0;background:none;cursor:pointer;perspective:800px;padding:0}
+.carta .face{position:absolute;inset:0;border-radius:10px;padding:7px;background:linear-gradient(145deg,var(--rar),#ffffff 40%,var(--rar) 60%,#00000060);box-shadow:0 10px 24px #00000070;transition:transform .25s}
+.carta .miolo{height:100%;border-radius:6px;background:#0a1838;display:flex;flex-direction:column;overflow:hidden;text-align:left}
+.carta .nome{font-weight:800;font-style:italic;font-size:13.5px;line-height:1.15;padding:6px 8px;background:linear-gradient(90deg,#ffffff1c,transparent);border-bottom:1px solid #ffffff22;min-height:40px;display:flex;align-items:center}
+.carta .arte{flex:1;margin:6px;border:1px solid #ffffff30;display:grid;place-items:center;position:relative;overflow:hidden;background:
+   repeating-linear-gradient(45deg,#ffffff08 0 6px,transparent 6px 12px),radial-gradient(circle at 50% 40%,var(--rar),#0a1838 75%)}
+.carta .arte svg{width:52%;height:auto;filter:drop-shadow(0 4px 8px #0008)}
+.carta .estrelas{font-size:11px;color:var(--ouro);padding:0 8px;letter-spacing:2px}
+.carta .rod{display:flex;justify-content:space-between;font-family:var(--pixel);font-size:10px;padding:4px 8px 8px;color:#cdd8f0}
+.carta:hover .face,.carta:focus-visible .face{transform:translateY(-10px) rotateX(8deg)}
+.carta[aria-pressed="true"] .face{transform:translateY(-14px);box-shadow:0 0 0 3px var(--branco),0 0 30px var(--rar)}
+.carta:focus-visible{outline:none}
+.carta-grande-slot .carta{width:100%;cursor:default}
+.carta-grande-slot .carta .nome{font-size:22px;min-height:64px;padding:10px 14px}
+.carta-grande-slot .carta .estrelas{font-size:16px;padding:4px 14px}
+.carta-grande-slot .carta .rod{font-size:13px;padding:8px 14px 14px}
+.carta-grande-slot .carta .face{padding:10px;border-radius:14px}
+.carta-grande-slot .carta .face{animation:flip .5s ease-out}
+.carta-grande-slot .brilho{position:absolute;inset:0;border-radius:14px;pointer-events:none;background:linear-gradient(115deg,transparent 30%,#ffffff40 45%,transparent 60%);background-size:250% 100%;animation:brilho 3.5s linear infinite;mix-blend-mode:overlay}
+@keyframes flip{from{transform:rotateY(90deg)}}
+@keyframes brilho{from{background-position:120% 0}to{background-position:-120% 0}}
+
+/* ---------- INVENTÁRIO (pixel) ---------- */
+#inventario{background:#0E1A33}
+.inv{margin-top:44px;background:#C6C6C6;padding:18px;max-width:700px;box-shadow:inset 4px 4px 0 #fff,inset -4px -4px 0 #555,0 0 0 4px #000;color:#3f3f3f;font-family:var(--pixel)}
+.inv h3{font-size:14px;font-weight:400;margin-bottom:12px}
+.slots{display:grid;grid-template-columns:repeat(9,1fr);gap:4px}
+.slot{aspect-ratio:1;background:#8B8B8B;box-shadow:inset 3px 3px 0 #373737,inset -3px -3px 0 #fff;display:grid;place-items:center;position:relative;border:0;cursor:default}
+.slot.item{cursor:pointer}
+.slot.item:hover,.slot.item:focus-visible{background:#a8a8a8;outline:none}
+.slot .bloco{width:68%;aspect-ratio:1;background:var(--c);box-shadow:inset -4px -4px 0 #00000055,inset 4px 4px 0 #ffffff55;display:grid;place-items:center;font-size:clamp(8px,1.3vw,11px);color:#fff;text-shadow:1px 1px 0 #000}
+.tooltip{position:fixed;z-index:60;pointer-events:none;background:#100010f0;border:2px solid #2a0a5e;outline:2px solid #100010;color:#fff;font-family:var(--pixel);font-size:12px;padding:8px 10px;max-width:260px;line-height:1.5;display:none}
+.tooltip b{display:block;font-weight:400;color:#fff}
+.tooltip span{color:#A8A8FF}
+.xp{margin-top:22px;max-width:700px}
+.xp .nv{font-family:var(--pixel);color:var(--verde);text-align:center;font-size:20px;text-shadow:2px 2px 0 #000}
+.xp .trilha{height:14px;background:#000;border:2px solid #000;margin-top:4px;position:relative}
+.xp .trilha i{position:absolute;inset:0;width:0;background:repeating-linear-gradient(90deg,var(--verde) 0 calc(5.55% - 2px),#000 calc(5.55% - 2px) 5.55%);transition:width 1.2s ease-out}
+.xp p{font-family:var(--pixel);font-size:12px;color:var(--nevoa);margin-top:8px;text-align:center}
+
+/* ---------- MISSÕES ---------- */
+#missoes{background:var(--azul)}
+#missoes::before{content:"";position:absolute;inset:0;background:linear-gradient(115deg,transparent 0 64%,#ffffff0d 64% 80%,transparent 80%)}
+.quadro{position:relative;margin-top:44px;max-width:820px;background:linear-gradient(180deg,#0f2f86,#081c55);border:3px solid #fff;outline:3px solid #06122E;box-shadow:12px 12px 0 #06122E}
+.quadro .cab{display:flex;justify-content:space-between;align-items:center;padding:12px 18px;border-bottom:2px solid #ffffff40;font-weight:800;font-style:italic}
+.quadro .cab span{font-family:var(--pixel);font-style:normal;font-weight:400;font-size:12px;color:var(--ouro)}
+.missao{border-bottom:1px solid #ffffff1c}
+.missao:last-child{border-bottom:0}
+.missao button{width:100%;display:grid;grid-template-columns:34px 1fr auto;gap:14px;align-items:center;background:none;border:0;padding:14px 18px;cursor:pointer;text-align:left}
+.missao button:hover{background:#ffffff0d}
+.missao .check{width:22px;height:22px;border:2px solid #fff;display:grid;place-items:center;font-size:14px}
+.missao .t{font-weight:700;font-size:18px}
+.missao .n{font-family:var(--pixel);font-size:11px;color:var(--ciano)}
+.missao .corpo{display:none;padding:0 18px 16px 66px;color:#D3DDF3}
+.missao.aberta .corpo{display:block}
+.missao.aberta button{background:#ffffff10}
+.missao.aberta .check{background:var(--ciano);border-color:var(--ciano);color:#06122E}
+
+/* ---------- PERFIL ---------- */
+#perfil{background:var(--noite)}
+.perfil-grid{display:grid;grid-template-columns:1fr 1fr;gap:40px;margin-top:44px;align-items:start}
+.perfil-grid p{color:#DCE5F7;max-width:58ch}
+.perfil-grid p+p{margin-top:14px}
+.placar{width:100%;border-collapse:collapse;font-size:15px;background:#000000550;background:#00000055;border:1px solid #ffffff22}
+.placar caption{text-align:left;font-family:var(--pixel);font-size:12px;color:var(--nevoa);padding-bottom:10px}
+.placar th,.placar td{padding:10px 14px;text-align:left;border-bottom:1px solid #ffffff14}
+.placar th{color:var(--nevoa);font-weight:500;width:42%}
+.placar tr:first-child td{color:var(--ciano)}
+
+/* ---------- LOBBY / CONTATO ---------- */
+#recrutar{background:linear-gradient(180deg,var(--noite),#1a0c18)}
+.lobby{display:grid;grid-template-columns:repeat(5,1fr);gap:12px;margin-top:44px}
+.vaga{aspect-ratio:3/4;border:2px dashed #ffffff30;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:8px;color:var(--nevoa);font-size:14px;text-align:center;padding:10px}
+.vaga.cheia{border:2px solid var(--verde);background:linear-gradient(180deg,#7CC24222,transparent);color:#fff}
+.vaga .av{width:56px;height:56px;background:var(--azul2);clip-path:polygon(50% 0,100% 25%,100% 75%,50% 100%,0 75%,0 25%);display:grid;place-items:center;font-weight:900;font-style:italic;font-size:22px}
+.vaga .pronto{font-family:var(--pixel);font-size:11px;color:var(--verde)}
+.vaga.voce{border-color:var(--vermelho);border-style:solid;color:#fff;animation:pulsa 1.6s ease-in-out infinite}
+@keyframes pulsa{50%{box-shadow:0 0 24px #F2545B66}}
+.acoes{display:flex;flex-wrap:wrap;gap:14px;margin-top:32px;align-items:center}
+.btn-link{display:inline-flex;align-items:center;gap:8px;background:transparent;border:2px solid #fff;color:#fff;font-weight:800;font-style:italic;padding:8px 20px;text-decoration:none;clip-path:polygon(6% 0,100% 0,94% 100%,0 100%)}
+.email{margin-top:16px;font-family:var(--mono);font-size:14px;color:var(--nevoa)}
+.toast{font-family:var(--pixel);font-size:12px;color:var(--verde)}
+footer{padding:28px 0 40px;font-family:var(--mono);font-size:13px;color:#5f739c;background:#1a0c18}
+
+/* ---------- paleta de comandos ---------- */
+#paleta{position:fixed;inset:0;z-index:90;background:#020814b0;display:none;align-items:flex-start;justify-content:center;padding-top:14vh}
+#paleta.aberta{display:flex}
+.paleta-box{width:min(560px,92vw);background:#0b1633;border:1px solid #ffffff2a;border-radius:10px;overflow:hidden;box-shadow:0 30px 60px #000a}
+.paleta-box input{width:100%;background:transparent;border:0;border-bottom:1px solid #ffffff1c;padding:16px 18px;color:#fff;font-family:var(--mono);font-size:16px;outline:none}
+.paleta-box ul{list-style:none;max-height:320px;overflow:auto}
+.paleta-box li{padding:11px 18px;cursor:pointer;display:flex;justify-content:space-between;font-size:15px}
+.paleta-box li span{font-family:var(--mono);font-size:12px;color:var(--nevoa)}
+.paleta-box li.sel{background:#3FD0FF22;color:#fff}
+
+/* ---------- demos ---------- */
+.mapa-svg{width:100%;max-width:440px;display:block}
+.mapa-svg .loja{cursor:pointer}
+.mapa-svg .loja rect{fill:#13265a;stroke:#3FD0FF66;transition:fill .15s}
+.mapa-svg .loja:hover rect,.mapa-svg .loja.ativa rect{fill:#1d3f99;stroke:var(--ciano)}
+.mapa-svg text{fill:#dce5f7;font-size:11px;font-family:Saira,sans-serif;pointer-events:none}
+.rota{fill:none;stroke:var(--vermelho);stroke-width:4;stroke-linecap:round;stroke-linejoin:round}
+.resultado{font-weight:700;margin-top:8px;min-height:1.6em;color:var(--ciano)}
+.barras{display:flex;flex-direction:column;gap:12px;margin:14px 0 4px}
+.barras .lin{display:grid;grid-template-columns:90px 1fr 70px;gap:10px;align-items:center;font-size:14px}
+.barras .b{height:14px;background:#ffffff12}
+.barras .b i{display:block;height:100%;background:var(--ciano);transition:width .6s cubic-bezier(.2,.8,.2,1)}
+.barras .d{font-family:var(--pixel);font-size:11px;text-align:right}
+.sobe{color:var(--verde)}.desce{color:var(--vermelho)}
+.todo-form{display:flex;gap:8px}
+.todo-form input{flex:1;background:#ffffff0e;border:1px solid #ffffff2a;color:#fff;padding:8px 12px;font:inherit;font-size:15px}
+.todo-list{list-style:none;margin-top:12px;display:flex;flex-direction:column;gap:6px}
+.todo-list label{display:flex;gap:10px;align-items:center;cursor:pointer;font-size:15px}
+.todo-list input{accent-color:var(--verde);width:18px;height:18px}
+.todo-list .feita span{text-decoration:line-through;color:var(--nevoa)}
+.resumo{margin-top:12px;font-family:var(--pixel);font-size:12px;color:var(--ouro)}
+.tabela-notas{width:100%;border-collapse:collapse;font-size:13px;font-family:var(--mono)}
+.tabela-notas th,.tabela-notas td{padding:5px 8px;border-bottom:1px solid #ffffff14;text-align:left}
+.tabela-notas th{color:var(--nevoa);font-weight:400}
+.tabela-notas td.v{text-align:right}
+.saida{margin-top:14px;white-space:pre-wrap;font-family:var(--mono);font-size:13px;line-height:1.6;background:#ffffff08;border-left:3px solid var(--verde);padding:12px 14px;display:none}
+.passos{list-style:none;display:flex;flex-direction:column;gap:8px;margin:14px 0;font-family:var(--mono);font-size:14px}
+.passos li{color:#5f739c;transition:color .2s}
+.passos li.ok{color:#8EF0B0}
+.passos li.rodando{color:var(--ouro)}
+
+/* ---------- responsivo ---------- */
+@media (max-width:900px){
+  .hero-grid{grid-template-columns:1fr;gap:56px;padding-top:110px}
+  .menu{align-items:flex-start;transform:rotate(-4deg)}
+  .menu li{margin-right:0;margin-left:var(--off)}
+  .dica-teclas{text-align:left}
+  .killfeed{display:none}
+  .dica-teclas{display:none}
+  .palco{grid-template-columns:1fr}
+  .carta-grande-slot{position:static;max-width:260px}
+  .habilidades{grid-template-columns:repeat(2,1fr)}
+  .perfil-grid{grid-template-columns:1fr}
+  .lobby{grid-template-columns:repeat(3,1fr)}
+  .codigo-fundo{display:none}
+}
+@media (max-width:520px){
+  body{font-size:16px}
+  .cmd-btn span{display:none}
+  .lobby{grid-template-columns:repeat(2,1fr)}
+  .barras .lin{grid-template-columns:72px 1fr 56px}
+}
+</style>
+</head>
+<body>
+
+<!-- BOOT -->
+<div id="boot" role="dialog" aria-label="Tela de abertura">
+  <pre id="boot-txt"></pre>
+  <button class="pular" id="pular">Pular abertura (Esc)</button>
+</div>
+
+<header class="hud">
+  <a class="jogador" href="#inicio">ERICK <span class="nivel">Nv. 19</span></a>
+  <button class="cmd-btn" id="abrir-paleta" aria-label="Abrir paleta de comandos"><span>Comandos</span> <kbd>Ctrl K</kbd></button>
+</header>
+
+<main>
+<!-- HERO / MENU -->
+<div class="hero" id="inicio">
+  <pre class="codigo-fundo" aria-hidden="true">const erick = {
+  curso: "ADS · UniCuritiba",
+  linguagem: "Python",
+  foco: ["sites", "automações"],
+  buscando: "estágio 2027",
+};
+
+function resolver(problema) {
+  const ideia = entender(problema);
+  const mvp = prototipar(ideia);
+  return deploy(testar(mvp));
+}
+
+while (aprendendo) {
+  commit("+1 projeto");
+}</pre>
+
+  <div class="killfeed" id="killfeed" aria-hidden="true"></div>
+
+  <div class="wrap hero-grid">
+    <div>
+      <h1>Projetos que já<span class="l2">saíram do papel.</span></h1>
+      <p class="sub">Sou o <strong>Erick</strong>, estudante de Análise e Desenvolvimento de Sistemas na UniCuritiba. Crio sites e automações que resolvem problemas reais do trabalho e da faculdade.</p>
+    </div>
+    <nav aria-label="Menu principal">
+      <ul class="menu" id="menu">
+        <li><a href="#projetos">Projetos<small>05</small></a></li>
+        <li><a href="#inventario">Inventário</a></li>
+        <li><a href="#missoes">Missões</a></li>
+        <li><a href="#perfil">Perfil</a></li>
+        <li><a href="#recrutar">Recrutar</a></li>
+      </ul>
+      <p class="dica-teclas">Setas para navegar, Enter para abrir</p>
+    </nav>
+  </div>
+</div>
+
+<!-- PROJETOS -->
+<section id="projetos">
+  <div class="wrap">
+    <div class="comentario">// escolha seu projeto</div>
+    <h2 class="sec-titulo">Seleção de projetos</h2>
+    <p class="sec-sub">Clique numa carta para ver o projeto. Use Q, W, E e R para conhecer cada habilidade e teste a demonstração.</p>
+
+    <div class="palco">
+      <div class="carta-grande-slot" id="carta-grande"></div>
+      <div class="info" id="info" aria-live="polite"></div>
+    </div>
+
+    <div class="deck-titulo">Seu deck: 5 cartas</div>
+    <div class="deck" id="deck" role="group" aria-label="Cartas de projetos"></div>
+  </div>
+</section>
+
+<!-- INVENTÁRIO -->
+<section id="inventario">
+  <div class="wrap">
+    <div class="comentario">// ferramentas equipadas</div>
+    <h2 class="sec-titulo">Inventário</h2>
+    <p class="sec-sub">Passe o mouse ou foque num bloco para ver onde usei cada ferramenta.</p>
+    <div class="inv">
+      <h3>Ferramentas</h3>
+      <div class="slots" id="slots"></div>
+    </div>
+    <div class="xp">
+      <div class="nv">19</div>
+      <div class="trilha"><i id="xp-barra"></i></div>
+      <p id="xp-txt">Progresso do curso</p>
+    </div>
+  </div>
+  <div class="tooltip" id="tooltip" role="tooltip"></div>
+</section>
+
+<!-- MISSÕES -->
+<section id="missoes">
+  <div class="wrap">
+    <div class="comentario">// como eu levo um projeto</div>
+    <h2 class="sec-titulo">Missões</h2>
+    <p class="sec-sub">Todo projeto passa por estas sete missões, da ideia até a manutenção. Clique em uma para ver os detalhes.</p>
+    <div class="quadro">
+      <div class="cab">Missão principal: colocar o projeto no ar <span>7 etapas</span></div>
+      <div id="lista-missoes"></div>
+    </div>
+  </div>
+</section>
+
+<!-- PERFIL -->
+<section id="perfil">
+  <div class="wrap">
+    <div class="comentario">// sobre o jogador</div>
+    <h2 class="sec-titulo">Perfil</h2>
+    <div class="perfil-grid">
+      <div>
+        <p>Tenho 19 anos e moro na região metropolitana de Curitiba. Trabalho na área administrativa de um FIDC, onde comecei como jovem aprendiz e fui efetivado. Muitos dos meus projetos nasceram lá: tarefas repetitivas viraram automações e planilhas viraram sistemas.</p>
+        <p>Uso IA, principalmente o Claude, como parceira de programação. Minha parte é entender o problema, definir as regras, testar e decidir o que vai para o ar.</p>
+      </div>
+      <table class="placar">
+        <caption>Ficha do jogador</caption>
+        <tr><th>Classe</th><td>Desenvolvedor em formação</td></tr>
+        <tr><th>Curso</th><td>Análise e Desenvolvimento de Sistemas</td></tr>
+        <tr><th>Faculdade</th><td>UniCuritiba</td></tr>
+        <tr><th>Formatura</th><td>Dezembro de 2028</td></tr>
+        <tr><th>Linguagem do curso</th><td>Python</td></tr>
+        <tr><th>Projetos concluídos</th><td>5</td></tr>
+        <tr><th>Objetivo atual</th><td>Estágio em TI para 2027</td></tr>
+      </table>
+    </div>
+  </div>
+</section>
+
+<!-- RECRUTAR -->
+<section id="recrutar">
+  <div class="wrap">
+    <div class="comentario">// procurando time</div>
+    <h2 class="sec-titulo">Recrute para o seu time</h2>
+    <p class="sec-sub">Estou procurando estágio em desenvolvimento. Se algum projeto chamou sua atenção, a vaga ao lado é sua.</p>
+    <div class="lobby">
+      <div class="vaga cheia"><div class="av">E</div><b>Erick</b><span class="pronto">Pronto</span></div>
+      <div class="vaga voce"><b>Você?</b><span>Vaga aberta</span></div>
+      <div class="vaga">Vaga aberta</div>
+      <div class="vaga">Vaga aberta</div>
+      <div class="vaga">Vaga aberta</div>
+    </div>
+    <div class="acoes">
+      <button class="btn-acao" id="copiar">Copiar e-mail</button>
+      <a class="btn-link" href="https://github.com/ErickCripto">Ver meu GitHub</a>
+      <span class="toast" id="toast" role="status"></span>
+    </div>
+    <p class="email">E-mail: <span id="email">seuemail@exemplo.com</span></p>
+  </div>
+</section>
+</main>
+<footer><div class="wrap">// feito por Erick, Curitiba 2026. Aperte Ctrl K a qualquer momento.</div></footer>
+
+<!-- PALETA -->
+<div id="paleta" role="dialog" aria-modal="true" aria-label="Paleta de comandos">
+  <div class="paleta-box">
+    <input id="paleta-busca" placeholder="Digite um comando..." autocomplete="off" aria-label="Buscar comando">
+    <ul id="paleta-lista" role="listbox"></ul>
+  </div>
+</div>
+
+<script>
+/* ============ DADOS ============ */
+const RAR = {
+  lendario:{nome:'Lendário', cor:'#F2C14E'},
+  epico:{nome:'Épico', cor:'#A27BFF'},
+  raro:{nome:'Raro', cor:'#3FD0FF'}
+};
+const ICONES = {
+  web:'<svg viewBox="0 0 64 64" fill="none" stroke="#fff" stroke-width="4"><rect x="6" y="10" width="52" height="42" rx="4"/><path d="M6 22h52"/><circle cx="14" cy="16" r="1.5" fill="#fff"/><circle cx="20" cy="16" r="1.5" fill="#fff"/><path d="M22 32l-6 6 6 6M42 32l6 6-6 6M35 30l-6 16"/></svg>',
+  auto:'<svg viewBox="0 0 64 64" fill="none" stroke="#fff" stroke-width="4"><circle cx="32" cy="32" r="9"/><path d="M32 6v9M32 49v9M6 32h9M49 32h9M13.6 13.6l6.4 6.4M44 44l6.4 6.4M13.6 50.4l6.4-6.4M44 20l6.4-6.4"/></svg>',
+  mapa:'<svg viewBox="0 0 64 64" fill="none" stroke="#fff" stroke-width="4"><path d="M32 58s-18-17-18-30a18 18 0 0136 0c0 13-18 30-18 30z"/><circle cx="32" cy="28" r="6"/></svg>',
+  dados:'<svg viewBox="0 0 64 64" fill="none" stroke="#fff" stroke-width="4"><path d="M8 54h48"/><rect x="12" y="32" width="9" height="22"/><rect x="27.5" y="20" width="9" height="34"/><rect x="43" y="10" width="9" height="44"/></svg>',
+  radar:'<svg viewBox="0 0 64 64" fill="none" stroke="#fff" stroke-width="4"><circle cx="32" cy="32" r="24"/><circle cx="32" cy="32" r="13"/><path d="M32 32L50 16"/><circle cx="44" cy="40" r="3" fill="#fff"/></svg>'
+};
+
+const PROJETOS = [
+  { id:'mesa-de-carteiras', nome:'Mesa de Carteiras', rar:'lendario', nivel:5, icone:'dados', area:'Sistema web',
+    tipo:'Sistema web para a equipe, em uso no trabalho',
+    desc:'Sistema para acompanhar a confirmação das carteiras de um FIDC: base do dia, metas por risco, tranches, chamados e parecer semanal. Guarda o histórico das posições para comparar a semana anterior com a atual.',
+    stats:{Impacto:92, Complexidade:85, 'Uso real':95},
+    habs:[
+      ['Visão geral','Todas as carteiras numa tela só, com metas por faixa de risco e o status da confirmação de cada uma.'],
+      ['Anterior x atual','Compara a posição da semana passada com a de agora e mostra o que melhorou ou piorou.'],
+      ['Login da equipe','Contas com senha e recuperação por código no e-mail (Supabase). A equipe vê os mesmos dados.'],
+      ['Parecer semanal','Registra o parecer e as formalizações de cada carteira, com histórico.']
+    ],
+    demo:'mesa', tech:'Render, Supabase, GitHub'},
+  { id:'planilhas-de-pendencias', nome:'Gerador de Pendências', rar:'epico', nivel:4, icone:'auto', area:'Automação',
+    tipo:'Automação de rotina, usada todo dia no trabalho',
+    desc:'A partir da base de notas fiscais de um cedente, gera as planilhas de pendências separadas por motivo, um resumo com o percentual de confirmação da carteira e o texto do parecer no padrão da empresa.',
+    stats:{Impacto:88, Complexidade:70, 'Uso real':100},
+    habs:[
+      ['Separa por motivo','Cada motivo de pendência (dificuldade no contato, nada consta, aceite...) vira uma aba com o modelo certo.'],
+      ['Confirmação da carteira','Calcula quanto do valor em aberto já está confirmado, em percentual.'],
+      ['Parecer pronto','Escreve o texto de pendência no padrão da empresa, com valores, percentuais e pedidos.'],
+      ['Prompt compartilhável','O processo virou um arquivo de instruções que outros colegas também usam.']
+    ],
+    demo:'pendencias', tech:'Excel, IA (Claude)'},
+  { id:'mapa-shopping', nome:'Mapa Shopping', rar:'epico', nivel:4, icone:'mapa', area:'Site',
+    tipo:'Site de navegação interna, projeto da faculdade',
+    desc:'Mapa inteligente do Jockey Plaza Shopping, em Curitiba, aberto por QR Code. A pessoa escolhe a loja e vê a rota com distância e tempo estimado, usando o GPS do celular.',
+    stats:{Impacto:75, Complexidade:78, 'Uso real':60},
+    habs:[
+      ['Rota até a loja','Desenha o caminho do ponto atual até a loja escolhida, com distância e tempo a pé.'],
+      ['GPS em tempo real','Usa a localização do celular para saber onde a pessoa está.'],
+      ['Acesso por QR Code','Basta apontar a câmera para o QR Code na entrada. Não precisa instalar nada.'],
+      ['Processo em BPMN','Todo o fluxo foi modelado antes no bpmn.io.']
+    ],
+    demo:'mapa', tech:'HTML, CSS, JavaScript, GitHub Pages'},
+  { id:'site-de-controle', nome:'Site de Controle', rar:'raro', nivel:3, icone:'web', area:'Site',
+    tipo:'Painel pessoal no Wix',
+    desc:'Painel para registrar atividades do dia, tarefas e pendências, metas, hábitos e estudos da faculdade, com resumos automáticos.',
+    stats:{Impacto:60, Complexidade:50, 'Uso real':70},
+    habs:[
+      ['Tarefas e pendências','Registro do que precisa ser feito, com status.'],
+      ['Metas e hábitos','Acompanhamento de metas pessoais e hábitos da semana.'],
+      ['Resumo automático','Resumo diário e semanal do que foi feito.'],
+      ['Status em lote','Muda o status de várias tarefas de uma vez.']
+    ],
+    demo:'todo', tech:'Wix, automações'},
+  { id:'monitor-de-concursos', nome:'Monitor de Concursos', rar:'raro', nivel:3, icone:'radar', area:'Automação',
+    tipo:'Tarefas agendadas toda semana',
+    desc:'Toda semana, uma rotina procura concursos abertos nas prefeituras de Curitiba, Pinhais e Piraquara e manda o resumo por e-mail e para o Notion. Outra acompanha promoções da minha lista de compras.',
+    stats:{Impacto:55, Complexidade:45, 'Uso real':80},
+    habs:[
+      ['Busca semanal','Procura editais novos nas três prefeituras toda terça.'],
+      ['E-mail automático','Manda o resumo pronto para a caixa de entrada.'],
+      ['Salva no Notion','Registra cada concurso numa base do Notion.'],
+      ['Radar de promoções','Outra rotina avisa quando itens da lista de compras entram em promoção.']
+    ],
+    demo:'concursos', tech:'Gmail, Notion, pesquisa na web'}
+];
+
+/* ============ BOOT ============ */
+(function(){
+  const boot=document.getElementById('boot'), txt=document.getElementById('boot-txt');
+  let visto=false; try{visto=sessionStorage.getItem('boot')==='1'}catch(e){}
+  const reduz=matchMedia('(prefers-reduced-motion: reduce)').matches;
+  if(visto||reduz){boot.remove();return}
+  const linhas=['erick@portfolio:~$ ./iniciar','[ ok ] carregando projetos (5)','[ ok ] equipando inventário','[ ok ] conectando GitHub: ErickCripto','[ ok ] nível 19 carregado','','Pronto. Pressione qualquer tecla.'];
+  let i=0,c=0,out='',fim=false;
+  function tipo(){
+    if(fim)return;
+    if(i>=linhas.length){txt.innerHTML=out+'<span class="cursor"></span>';return}
+    const l=linhas[i];
+    if(c<=l.length){txt.innerHTML=out+l.slice(0,c)+'<span class="cursor"></span>';c+= i===0?1:3;setTimeout(tipo,i===0?28:12)}
+    else{out+=l+'\n';i++;c=0;setTimeout(tipo,120)}
+  }
+  tipo();
+  function fechar(){if(fim)return;fim=true;boot.classList.add('sai');try{sessionStorage.setItem('boot','1')}catch(e){}setTimeout(()=>boot.remove(),520);document.removeEventListener('keydown',fechar);document.getElementById('menu').querySelector('a').focus({preventScroll:true})}
+  boot.addEventListener('click',fechar);
+  document.addEventListener('keydown',fechar);
+})();
+
+/* ============ KILLFEED ============ */
+(function(){
+  const feed=document.getElementById('killfeed');
+  const arma='<svg viewBox="0 0 24 24" fill="none" stroke="#F2545B" stroke-width="2"><circle cx="12" cy="12" r="7"/><path d="M12 2v6M12 16v6M2 12h6M16 12h6"/></svg>';
+  const eventos=[['Erick','bug no login'],['Erick','tarefa repetitiva'],['Erick','planilha manual'],['Erick','deploy no Render'],['Erick','commit no GitHub'],['Erick','relatório de 2 horas']];
+  let k=0;
+  function add(){
+    const [a,b]=eventos[k++%eventos.length];
+    const d=document.createElement('div');d.className='kill';
+    d.innerHTML=`<span class="a">${a}</span>${arma}<span class="b">${b}</span>`;
+    feed.prepend(d); while(feed.children.length>4) feed.lastChild.remove();
+  }
+  add(); setInterval(add,2600);
+})();
+
+/* ============ MENU com setas ============ */
+(function(){
+  const itens=[...document.querySelectorAll('#menu a')];
+  itens.forEach((a,i)=>a.addEventListener('keydown',e=>{
+    if(e.key==='ArrowDown'){e.preventDefault();itens[(i+1)%itens.length].focus()}
+    if(e.key==='ArrowUp'){e.preventDefault();itens[(i-1+itens.length)%itens.length].focus()}
+  }));
+})();
+
+/* ============ CARTAS ============ */
+function htmlCarta(p){
+  const r=RAR[p.rar];
+  const st=p.stats;
+  return `<div class="face"><div class="miolo">
+    <div class="nome">${p.nome}</div>
+    <div class="arte">${ICONES[p.icone]}</div>
+    <div class="estrelas">${'★'.repeat(p.nivel)}${'☆'.repeat(5-p.nivel)}</div>
+    <div class="rod"><span>IMP ${st.Impacto}</span><span>DIF ${st.Complexidade}</span></div>
+  </div></div>`;
+}
+const deck=document.getElementById('deck');
+PROJETOS.forEach((p,i)=>{
+  const b=document.createElement('button');
+  b.className='carta'; b.style.setProperty('--rar',RAR[p.rar].cor);
+  b.setAttribute('aria-pressed','false'); b.setAttribute('aria-label',`${p.nome}, carta ${RAR[p.rar].nome}`);
+  b.dataset.id=p.id; b.innerHTML=htmlCarta(p);
+  b.addEventListener('click',()=>{selecionar(p.id,true)});
+  deck.appendChild(b);
+});
+
+let atual=null, habAtual=0, ignorarHash=false;
+function selecionar(id,rolar){
+  const p=PROJETOS.find(x=>x.id===id)||PROJETOS[0];
+  atual=p; habAtual=0;
+  document.querySelectorAll('.deck .carta').forEach(c=>c.setAttribute('aria-pressed',String(c.dataset.id===p.id)));
+  const g=document.getElementById('carta-grande');
+  g.innerHTML=`<div class="carta" style="--rar:${RAR[p.rar].cor}">${htmlCarta(p)}<div class="brilho"></div></div>`;
+  const info=document.getElementById('info');
+  info.style.setProperty('--rar',RAR[p.rar].cor);
+  info.innerHTML=`
+    <div class="raridade">${RAR[p.rar].nome}, ${p.area}</div>
+    <h3>${p.nome}</h3>
+    <div class="tipo">${p.tipo}</div>
+    <p class="desc">${p.desc}</p>
+    <div class="stats">${Object.entries(p.stats).map(([k,v])=>`<span>${k}</span><div class="barra"><i data-w="${v}"></i></div><span class="v">${v}</span>`).join('')}</div>
+    <div class="habilidades" role="group" aria-label="Habilidades">${p.habs.map((h,i)=>`<button class="hab" data-i="${i}" aria-pressed="${i===0}"><span class="tecla">${'QWER'[i]}</span><b>${h[0]}</b></button>`).join('')}</div>
+    <p class="hab-desc" id="hab-desc">${p.habs[0][1]}</p>
+    <div class="demo"><div class="demo-top"><div class="pontos"><i></i><i></i><i></i></div><span>demo: ${p.id}</span></div><div class="demo-corpo" id="demo"></div></div>`;
+  requestAnimationFrame(()=>info.querySelectorAll('.barra i').forEach(i=>i.style.width=i.dataset.w+'%'));
+  info.querySelectorAll('.hab').forEach(b=>b.addEventListener('click',()=>usarHab(+b.dataset.i)));
+  DEMOS[p.demo](document.getElementById('demo'));
+  if(location.hash!=='#'+p.id && rolar!==null){
+    try{ ignorarHash=true; location.hash=p.id; }catch(e){ ignorarHash=false; }
+  }
+  if(rolar) document.getElementById('projetos').scrollIntoView({block:'start'});
+}
+function usarHab(i){
+  if(!atual)return; habAtual=i;
+  document.querySelectorAll('.hab').forEach(b=>b.setAttribute('aria-pressed',String(+b.dataset.i===i)));
+  document.getElementById('hab-desc').textContent=atual.habs[i][1];
+}
+document.addEventListener('keydown',e=>{
+  if(document.getElementById('paleta').classList.contains('aberta'))return;
+  const tag=(e.target.tagName||'').toLowerCase(); if(tag==='input'||tag==='textarea')return;
+  if(e.ctrlKey||e.metaKey||e.altKey)return;
+  const k='qwer'.indexOf(e.key.toLowerCase());
+  if(k>=0){const r=document.getElementById('projetos').getBoundingClientRect(); if(r.top<innerHeight&&r.bottom>0)usarHab(k)}
+});
+
+/* ============ DEMOS ============ */
+const brl=v=>v.toLocaleString('pt-BR',{style:'currency',currency:'BRL'});
+const pct=v=>(v*100).toLocaleString('pt-BR',{maximumFractionDigits:1})+'%';
+const DEMOS={
+  mapa(el){
+    const lojas=[
+      {n:'Livraria',x:20,y:20,pts:[[200,230],[200,120],[70,120],[70,80]]},
+      {n:'Cinema',x:300,y:20,pts:[[200,230],[200,120],[350,120],[350,80]]},
+      {n:'Loja de games',x:20,y:150,pts:[[200,230],[200,120],[70,120],[70,150]]},
+      {n:'Praça de alimentação',x:300,y:150,pts:[[200,230],[200,120],[350,120],[350,150]]}
+    ];
+    el.innerHTML=`<svg class="mapa-svg" viewBox="0 0 420 250" role="img" aria-label="Planta simplificada de um piso de shopping">
+      <rect x="10" y="100" width="400" height="40" fill="#0d1d46"/><rect x="180" y="100" width="40" height="140" fill="#0d1d46"/>
+      ${lojas.map((l,i)=>`<g class="loja" data-i="${i}" tabindex="0" role="button" aria-label="Rota até ${l.n}"><rect x="${l.x}" y="${l.y}" width="100" height="${l.y<100?60:60}" rx="4"/><text x="${l.x+50}" y="${l.y+34}" text-anchor="middle">${l.n}</text></g>`).join('')}
+      <polyline class="rota" id="rota" points=""/>
+      <circle cx="200" cy="230" r="8" fill="#F2545B"/><text x="214" y="234" style="fill:#fff">Você está aqui</text>
+    </svg><div class="resultado" id="res">Escolha uma loja no mapa.</div><p class="nota">Planta simplificada para demonstração.</p>`;
+    const rota=el.querySelector('#rota'),res=el.querySelector('#res');
+    el.querySelectorAll('.loja').forEach(g=>{
+      const go=()=>{
+        el.querySelectorAll('.loja').forEach(x=>x.classList.remove('ativa'));g.classList.add('ativa');
+        const l=lojas[+g.dataset.i];
+        rota.setAttribute('points',l.pts.map(p=>p.join(',')).join(' '));
+        let d=0;for(let i=1;i<l.pts.length;i++)d+=Math.hypot(l.pts[i][0]-l.pts[i-1][0],l.pts[i][1]-l.pts[i-1][1]);
+        rota.style.transition='none';rota.style.strokeDasharray=d;rota.style.strokeDashoffset=d;
+        rota.getBoundingClientRect();rota.style.transition='stroke-dashoffset .7s ease-out';rota.style.strokeDashoffset=0;
+        const m=Math.round(d*0.35), s=Math.round(m/1.3);
+        res.textContent=`Rota até ${l.n}: ${m} m, cerca de ${s<60?s+' segundos':Math.round(s/60)+' min'} a pé`;
+      };
+      g.addEventListener('click',go);g.addEventListener('keydown',e=>{if(e.key==='Enter'||e.key===' '){e.preventDefault();go()}});
+    });
+  },
+  mesa(el){
+    const dados=[['Cedente A',62,81],['Cedente B',74,70],['Cedente C',45,66],['Cedente D',88,93]];
+    el.innerHTML=`<div style="display:flex;gap:8px"><button class="btn-sec" data-s="0" aria-pressed="false">Semana anterior</button><button class="btn-sec" data-s="1" aria-pressed="true">Semana atual</button></div>
+      <div class="barras">${dados.map(d=>`<div class="lin"><span>${d[0]}</span><div class="b"><i></i></div><span class="d"></span></div>`).join('')}</div>
+      <p class="nota">Percentual de confirmação por carteira. Dados fictícios.</p>`;
+    const set=s=>{
+      el.querySelectorAll('.btn-sec').forEach(b=>b.setAttribute('aria-pressed',String(+b.dataset.s===s)));
+      el.querySelectorAll('.lin').forEach((l,i)=>{
+        const v=dados[i][1+s];l.querySelector('i').style.width=v+'%';
+        const dd=l.querySelector('.d');
+        if(s===1){const df=dados[i][2]-dados[i][1];dd.textContent=`${v}% ${df>=0?'▲':'▼'}${Math.abs(df)}`;dd.className='d '+(df>=0?'sobe':'desce')}
+        else{dd.textContent=v+'%';dd.className='d'}
+      });
+    };
+    el.querySelectorAll('.btn-sec').forEach(b=>b.addEventListener('click',()=>set(+b.dataset.s)));
+    requestAnimationFrame(()=>set(1));
+  },
+  todo(el){
+    const tarefas=[['Revisar matéria de Python',true],['Atualizar portfólio',false],['Treino',false]];
+    el.innerHTML=`<form class="todo-form"><input aria-label="Nova tarefa" placeholder="Nova tarefa" maxlength="60"><button class="btn-sec" type="submit">Adicionar tarefa</button></form><ul class="todo-list"></ul><div class="resumo"></div>`;
+    const ul=el.querySelector('ul'),res=el.querySelector('.resumo');
+    const render=()=>{
+      ul.innerHTML='';
+      tarefas.forEach((t,i)=>{const li=document.createElement('li');li.className=t[1]?'feita':'';
+        li.innerHTML=`<label><input type="checkbox" ${t[1]?'checked':''}><span></span></label>`;li.querySelector('span').textContent=t[0];
+        li.querySelector('input').addEventListener('change',e=>{t[1]=e.target.checked;render()});ul.appendChild(li)});
+      const f=tarefas.filter(t=>t[1]).length;res.textContent=`Resumo do dia: ${f} de ${tarefas.length} tarefas feitas`;
+    };
+    el.querySelector('form').addEventListener('submit',e=>{e.preventDefault();const i=el.querySelector('.todo-form input');if(i.value.trim()){tarefas.push([i.value.trim(),false]);i.value='';render()}});
+    render();
+  },
+  pendencias(el){
+    const notas=[
+      ['10231','Mercado Boa Vista',12400,'Confirmado'],
+      ['10232','Auto Peças Iguaçu',8350,'Dificuldade no contato'],
+      ['10233','Padaria Sol',3200,'Confirmado'],
+      ['10234','Construtora Pinhal',21000,'Enviado aceite'],
+      ['10235','Farmácia Central',5650,'Nada consta'],
+      ['10236','Distribuidora Norte',9800,'Confirmação']];
+    el.innerHTML=`<table class="tabela-notas"><thead><tr><th>NF</th><th>Sacado</th><th>Motivo</th><th style="text-align:right">Valor</th></tr></thead><tbody>
+      ${notas.map(n=>`<tr><td>${n[0]}</td><td>${n[1]}</td><td>${n[3]}</td><td class="v">${brl(n[2])}</td></tr>`).join('')}</tbody></table>
+      <div class="acoes" style="margin-top:16px"><button class="btn-acao" id="gerar">Gerar pendências</button><button class="btn-sec" id="copiar-parecer" hidden>Copiar parecer</button><span class="toast" id="t2"></span></div>
+      <div class="saida" id="saida"></div><p class="nota">Base fictícia para demonstração.</p>`;
+    const OK=['Confirmado','Confirmação'];
+    const pedidos={'Enviado aceite':'confirmar o aceite das notas enviadas','Dificuldade no contato':'nos informar um novo telefone de contato','Nada consta':'verificar com o sacado o recebimento da mercadoria'};
+    let texto='';
+    el.querySelector('#gerar').addEventListener('click',()=>{
+      const total=notas.reduce((s,n)=>s+n[2],0);
+      const ok=notas.filter(n=>OK.includes(n[3])).reduce((s,n)=>s+n[2],0);
+      const grupos={};notas.filter(n=>!OK.includes(n[3])).forEach(n=>{(grupos[n[3]]=grupos[n[3]]||[]).push(n)});
+      const ord=Object.entries(grupos).sort((a,b)=>b[1].reduce((s,n)=>s+n[2],0)-a[1].reduce((s,n)=>s+n[2],0));
+      texto=`Temos ${brl(total)} no risco, dos quais:\n`+ord.map(([m,ns])=>{const v=ns.reduce((s,n)=>s+n[2],0);return `- ${brl(v)} (${pct(v/total)}) em ${m}: ${ns.map(n=>n[1]).join(', ')};`}).join('\n')+
+        `\n\nPedimos a gentileza de ${ord.map(([m])=>pedidos[m]).join('; ')}.\n\nConfirmação da carteira: ${pct(ok/total)}`;
+      const s=el.querySelector('#saida');s.style.display='block';s.textContent='';
+      let i=0;const step=()=>{s.textContent=texto.slice(0,i);i+=6;if(i<=texto.length+6)requestAnimationFrame(step)};step();
+      el.querySelector('#copiar-parecer').hidden=false;
+    });
+    el.querySelector('#copiar-parecer').addEventListener('click',async()=>{const t=el.querySelector('#t2');try{await navigator.clipboard.writeText(texto);t.textContent='Parecer copiado'}catch(e){t.textContent='Selecione o texto para copiar'}setTimeout(()=>t.textContent='',2500)});
+  },
+  concursos(el){
+    const passos=['Buscar editais em Curitiba, Pinhais e Piraquara','Filtrar só os concursos abertos','Montar o resumo da semana','Enviar por e-mail','Salvar no Notion'];
+    el.innerHTML=`<button class="btn-acao" id="rodar">Rodar agora</button><ol class="passos">${passos.map(p=>`<li>[ .. ] ${p}</li>`).join('')}</ol><div class="resultado" id="r"></div><p class="nota">Simulação da rotina que roda toda terça.</p>`;
+    const lis=[...el.querySelectorAll('.passos li')],r=el.querySelector('#r'),b=el.querySelector('#rodar');
+    b.addEventListener('click',()=>{
+      b.disabled=true;r.textContent='';lis.forEach((l,i)=>{l.className='';l.textContent='[ .. ] '+passos[i]});
+      let i=0;const prox=()=>{
+        if(i>0){lis[i-1].className='ok';lis[i-1].textContent='[ ok ] '+passos[i-1]}
+        if(i<lis.length){lis[i].className='rodando';lis[i].textContent='[ >> ] '+passos[i];i++;setTimeout(prox,650)}
+        else{r.textContent='Rotina concluída. Resumo enviado.';b.disabled=false;b.textContent='Rodar de novo'}
+      };prox();
+    });
+  }
+};
+
+/* hash inicial */
+function lerHash(){if(ignorarHash){ignorarHash=false;return true}const h=location.hash.slice(1);const p=PROJETOS.find(x=>x.id===h);if(p){selecionar(p.id,false);return true}return false}
+if(!lerHash()) selecionar(PROJETOS[0].id,null);
+addEventListener('hashchange',lerHash);
+
+/* ============ INVENTÁRIO ============ */
+(function(){
+  const itens=[
+    ['Py','Python','#3572A5','Linguagem que estudo no curso'],
+    ['JS','JavaScript','#C9A400','Mapa Shopping, Mesa de Carteiras'],
+    ['HTML','HTML','#E34C26','Mapa Shopping, este portfólio'],
+    ['CSS','CSS','#563D7C','Mapa Shopping, este portfólio'],
+    ['Git','Git e GitHub','#24292E','Versionamento de todos os projetos'],
+    ['GHP','GitHub Pages','#2B7A3D','Hospedagem do Mapa Shopping'],
+    ['SB','Supabase','#2F9E6E','Login e dados da Mesa de Carteiras'],
+    ['RD','Render','#4B3CC9','Hospedagem da Mesa de Carteiras'],
+    ['XLS','Excel','#1D6F42','Gerador de Pendências'],
+    ['AI','Claude (IA)','#B5583A','Parceira de programação em todos os projetos'],
+    ['NT','Notion','#444','Monitor de Concursos'],
+    ['WX','Wix','#1A5FD0','Site de Controle'],
+    ['BP','BPMN','#8A5A00','Modelagem do processo do Mapa Shopping'],
+    ['QR','QR Code','#555','Acesso ao Mapa Shopping']
+  ];
+  const slots=document.getElementById('slots'),tip=document.getElementById('tooltip');
+  for(let i=0;i<18;i++){
+    const it=itens[i];
+    const s=document.createElement(it?'button':'div');s.className='slot'+(it?' item':'');
+    if(it){s.innerHTML=`<span class="bloco" style="--c:${it[2]}">${it[0]}</span>`;s.setAttribute('aria-label',`${it[1]}: ${it[3]}`);
+      const show=e=>{tip.innerHTML=`<b>${it[1]}</b><span>${it[3]}</span>`;tip.style.display='block';pos(e)};
+      const pos=e=>{const r=s.getBoundingClientRect();const x=e&&e.clientX?e.clientX+14:r.right+8;const y=e&&e.clientY?e.clientY-10:r.top;tip.style.left=Math.min(x,innerWidth-270)+'px';tip.style.top=y+'px'};
+      s.addEventListener('mouseenter',show);s.addEventListener('mousemove',pos);s.addEventListener('focus',()=>show());
+      s.addEventListener('mouseleave',()=>tip.style.display='none');s.addEventListener('blur',()=>tip.style.display='none');}
+    slots.appendChild(s);
+  }
+  addEventListener('scroll',()=>tip.style.display='none',{passive:true});
+  // XP: progresso do curso (fev/2026 a dez/2028)
+  const ini=new Date(2026,1,1),fim=new Date(2028,11,15),hoje=new Date();
+  const p=Math.max(0,Math.min(1,(hoje-ini)/(fim-ini)));
+  document.getElementById('xp-txt').textContent=`Curso ${Math.round(p*100)}% concluído. Próximo nível: formatura em dez/2028`;
+  const io=new IntersectionObserver(es=>{es.forEach(e=>{if(e.isIntersecting){document.getElementById('xp-barra').style.width=(p*100)+'%';io.disconnect()}})});
+  io.observe(document.querySelector('.xp'));
+})();
+
+/* ============ MISSÕES ============ */
+(function(){
+  const ms=[
+    ['Ideia e requisitos','Definir o que o projeto faz, para quem é e qual a versão mais simples que já resolve o problema (o MVP).'],
+    ['Design UX/UI','Planejar a jornada pelas telas, fazer rascunhos e criar a identidade visual.'],
+    ['Arquitetura','Escolher linguagem, banco de dados, estrutura de pastas e como as partes conversam.'],
+    ['Código','Construir o front-end e o back-end, com tudo versionado no GitHub.'],
+    ['Testes','Caçar bugs, testar em telas de tamanhos diferentes e ajustar a fluidez.'],
+    ['Deploy','Colocar no ar: GitHub Pages, Render ou as lojas de aplicativos.'],
+    ['Manutenção','Acompanhar erros, ouvir quem usa e lançar melhorias.']
+  ];
+  const box=document.getElementById('lista-missoes');
+  ms.forEach((m,i)=>{
+    const d=document.createElement('div');d.className='missao'+(i===0?' aberta':'');
+    d.innerHTML=`<button aria-expanded="${i===0}"><span class="check">${i===0?'✓':''}</span><span class="t">${m[0]}</span><span class="n">Etapa ${i+1} de 7</span></button><div class="corpo">${m[1]}</div>`;
+    d.querySelector('button').addEventListener('click',()=>{
+      const ab=!d.classList.contains('aberta');d.classList.toggle('aberta',ab);
+      d.querySelector('button').setAttribute('aria-expanded',ab);d.querySelector('.check').textContent=ab?'✓':'';
+    });
+    box.appendChild(d);
+  });
+})();
+
+/* ============ CONTATO ============ */
+document.getElementById('copiar').addEventListener('click',copiarEmail);
+async function copiarEmail(){
+  const t=document.getElementById('toast');const em=document.getElementById('email').textContent;
+  try{await navigator.clipboard.writeText(em);t.textContent='E-mail copiado. Bem-vindo ao time!'}catch(e){t.textContent='Selecione o e-mail abaixo para copiar'}
+  setTimeout(()=>t.textContent='',3500);
+}
+
+/* ============ PALETA DE COMANDOS ============ */
+(function(){
+  const pal=document.getElementById('paleta'),inp=document.getElementById('paleta-busca'),ul=document.getElementById('paleta-lista');
+  const cmds=[
+    ...PROJETOS.map(p=>({t:'Abrir projeto: '+p.nome,k:'projeto',f:()=>selecionar(p.id,true)})),
+    {t:'Ir para Inventário',k:'seção',f:()=>document.getElementById('inventario').scrollIntoView()},
+    {t:'Ir para Missões',k:'seção',f:()=>document.getElementById('missoes').scrollIntoView()},
+    {t:'Ir para Perfil',k:'seção',f:()=>document.getElementById('perfil').scrollIntoView()},
+    {t:'Copiar e-mail',k:'ação',f:()=>{document.getElementById('recrutar').scrollIntoView();copiarEmail()}},
+    {t:'Voltar ao início',k:'seção',f:()=>document.getElementById('inicio').scrollIntoView()}
+  ];
+  let lista=[],sel=0,antes=null;
+  function render(){
+    const q=inp.value.toLowerCase().normalize('NFD').replace(/[̀-ͯ]/g,'');
+    lista=cmds.filter(c=>c.t.toLowerCase().normalize('NFD').replace(/[̀-ͯ]/g,'').includes(q));
+    sel=Math.min(sel,Math.max(0,lista.length-1));
+    ul.innerHTML=lista.length?lista.map((c,i)=>`<li role="option" aria-selected="${i===sel}" class="${i===sel?'sel':''}" data-i="${i}">${c.t}<span>${c.k}</span></li>`).join(''):'<li>Nenhum comando encontrado</li>';
+    ul.querySelectorAll('li[data-i]').forEach(li=>li.addEventListener('click',()=>exec(+li.dataset.i)));
+  }
+  function abrir(){antes=document.activeElement;pal.classList.add('aberta');inp.value='';sel=0;render();inp.focus()}
+  function fechar(){pal.classList.remove('aberta');antes&&antes.focus&&antes.focus()}
+  function exec(i){const c=lista[i];if(!c)return;fechar();c.f()}
+  document.getElementById('abrir-paleta').addEventListener('click',abrir);
+  pal.addEventListener('click',e=>{if(e.target===pal)fechar()});
+  inp.addEventListener('input',()=>{sel=0;render()});
+  inp.addEventListener('keydown',e=>{
+    if(e.key==='ArrowDown'){e.preventDefault();sel=(sel+1)%Math.max(1,lista.length);render()}
+    if(e.key==='ArrowUp'){e.preventDefault();sel=(sel-1+lista.length)%Math.max(1,lista.length);render()}
+    if(e.key==='Enter'){e.preventDefault();exec(sel)}
+    if(e.key==='Escape'){fechar()}
+  });
+  document.addEventListener('keydown',e=>{
+    if((e.ctrlKey||e.metaKey)&&e.key.toLowerCase()==='k'){e.preventDefault();pal.classList.contains('aberta')?fechar():abrir()}
+  });
+})();
+</script>
+</body>
+</html>
